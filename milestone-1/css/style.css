@@ -1,3 +1,4 @@
+/* general */
 *,
 *::after,
 *::before{
@@ -7,5 +8,21 @@
 }
 
 body{
+  width: 100vh;
+  height: 100vh;
   font-family: 'Lato', sans-serif;
+  background: linear-gradient(to top, #d8dbd5 85%, #009688 0%);
 }
+
+/* utilities */
+
+/* container */
+
+/* header */
+
+/* main */
+
+/* navigator */
+
+/* chat section */
+
