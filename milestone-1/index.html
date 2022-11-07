@@ -28,7 +28,7 @@
           
           <div class="user-profile d-flex align-center">
             <div class="rounded-icon">
-              <img src="img/avatar_1.jpg" alt="">
+              <img src="img/avatar_io.jpg" alt="">
             </div>
             <p>User name</p>
           </div>
@@ -69,17 +69,20 @@
 
         <section class="bottom-nav">
 
-          <div class="contact-card d-flex">
+          <div
+          class="contact-card d-flex"
+          v-for="contact in contacts"
+          :class="{'active':contact.visible}">
 
             <div class="icon-container d-flex center-flex">
               <div class="rounded-icon big">
-                <img src="img/avatar_2.jpg" alt="">
+                <img :src="'img/avatar'+ contact.avatar + '.jpg'" alt="">
               </div>
             </div>
 
             <div class="info-card d-flex space-between">
               <div class="message-info">
-                <p>Nome e Cognome</p>
+                <p>{{contact.name}}</p>
                 <p>Ultimo messaggio inviato</p>
               </div>
               <div class="last-msg-time">

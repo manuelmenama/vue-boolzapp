@@ -15,7 +15,7 @@ body{
 }
 
 img{
-  max-width: 100%;
+  width: 70px;
   object-fit: cover;
 }
 
@@ -72,14 +72,16 @@ img{
   border-radius: 50%;
   text-align: center;
   line-height: 50px;
-  
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rounded-icon.big{
   height: 65px;
   width: 65px;
-  line-height: 65px;
+  border-radius: 50%;
 }
 
 /* container */
@@ -93,6 +95,7 @@ img{
 main{
   width: 100%;
   height: 95%;
+  min-width: 800px;
 }
 
 /* navigator */
@@ -188,13 +191,17 @@ main{
   padding: 5px;
 }
 
+.contact-card.active{
+  background-color: #e9ebeb;
+}
+
 .icon-container{
-  width: 20%;
-  margin-left: 20px;
+  width: 100px;
+  overflow: hidden;
 }
 
 .info-card{
-  width: 80%;
+  width: calc(100% - 100px);
   margin-left: 20px;
 }
 
