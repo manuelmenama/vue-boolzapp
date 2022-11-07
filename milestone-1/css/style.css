@@ -50,8 +50,30 @@ main{
 }
 
 .top-nav{
-  height: 60px;
+  height: 70px;
   background-color: #eaeaea;
+}
+
+.utilities-nav{
+  height: 80px;
+  background-color: #8edafc;
+}
+
+.search-nav{
+  height: 40px;
+  background-color: #fafafa;
+}
+
+.bottom-nav{
+  height: calc(100% - 190px);
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.contact-card{
+  height: 80px;
+  background-color: white;
+  border-top: 1px solid #e9ebeb;
 }
 
 /* chat section */
@@ -61,7 +83,19 @@ main{
 }
 
 .top-chat{
-  height: 60px;
+  height: 70px;
   background-color: #eaeaea;
 }
+
+.main-chat{
+  background-image: url(../img/mine.jpg);
+  height: calc(100% - 140px);
+  overflow-y: scroll;
+}
+
+.bottom-chat{
+  height: 70px;
+  background-color: #f3eeea;
+}
+
 
