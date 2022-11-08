@@ -197,9 +197,6 @@ createApp({
         status: 'received'
       }
       this.contacts[this.indexCounter].messages.push(newMsgFormat);
-    },
-    searchByName() {
-      
     }
   },
   mounted() {
