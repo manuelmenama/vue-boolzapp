@@ -6,6 +6,9 @@ const {createApp} = Vue;
 createApp({
   data() {
     return {
+      indexCounter: 0,
+      isRecived: false,
+
       contacts: [
         {
           name: 'Michele',
@@ -172,7 +175,9 @@ createApp({
     }
   },
   methods: {
-
+    contactClickIssues(index) {
+      this.indexCounter = index;
+    }
   },
   mounted() {
     console.log("Mounted 'boolzapp'");

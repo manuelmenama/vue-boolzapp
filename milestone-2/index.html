@@ -71,8 +71,9 @@
 
           <div
           class="contact-card d-flex"
-          v-for="contact in contacts"
-          :class="{'active':contact.visible}">
+          v-for="(contact, index) in contacts"
+          @click="contactClickIssues(index)"
+          :class="{'active':indexCounter===index}">
 
             <div class="icon-container d-flex center-flex">
               <div class="rounded-icon big">
@@ -83,10 +84,10 @@
             <div class="info-card d-flex space-between">
               <div class="message-info">
                 <p>{{contact.name}}</p>
-                <p>Ultimo messaggio inviato</p>
+                <p>{{contact.messages[contact.messages.length-1].message}}</p>
               </div>
               <div class="last-msg-time">
-                <p>12.00</p>
+                <p>{{contact.messages[contact.messages.length-1].date}}</p>
               </div>
             </div>
           </div>
@@ -101,9 +102,12 @@
 
           <div class="user-profile d-flex align-center">
             <div class="rounded-icon">
-              <img src="img/avatar_2.jpg" alt="">
+              <img :src="'img/avatar'+contacts[indexCounter].avatar+'.jpg'" alt="">
             </div>
-            <p>User name</p>
+            <div class="user-info">
+              <p>{{contacts[indexCounter].name}}</p>
+              <p>{{contacts[indexCounter].messages[contacts[indexCounter].messages.length-1].date}}</p>
+            </div>
           </div>
 
           <div class="profile-option d-flex align-center">
@@ -116,17 +120,13 @@
 
         <div class="main-chat">
 
-          <div class="log-control my-log">
-            <p>Some text</p>
+          <div
+            class="log-control"
+            v-for="(msg, index) in contacts[indexCounter].messages"
+            :class="{'interlocutor-log':msg.status === 'received'}">
+            <p>{{msg.message}}</p>
             <div class="msg-time d-flex">
-              <p>12.00</p>
-            </div>
-          </div>
-
-          <div class="log-control interlocutor-log">
-            <p>Some text other</p>
-            <div class="msg-time  d-flex">
-              <p>12.00</p>
+              <p>{{msg.date}}</p>
             </div>
           </div>
           
