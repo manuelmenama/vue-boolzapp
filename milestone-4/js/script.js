@@ -197,6 +197,14 @@ createApp({
         status: 'received'
       }
       this.contacts[this.indexCounter].messages.push(newMsgFormat);
+    },
+    searchByName() {
+      this.contacts.forEach(contact => {
+        let matchName = contact.name.includes(this.searchedWord);
+        console.log(matchName);
+        if(!matchName) contact.visible = false;
+        else contact.visible = true;
+      });
     }
   },
   mounted() {

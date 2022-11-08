@@ -67,7 +67,8 @@
           <input
             type="text"
             placeholder="Search..."
-            v-model.trim="searchedWord">
+            v-model="searchedWord"
+            @keyup="searchByName()">
         </section>
 
         <section class="bottom-nav">
@@ -75,6 +76,7 @@
           <div
           class="contact-card d-flex"
           v-for="(contact, index) in contacts"
+          v-show="contact.visible"
           @click="contactClickIssues(index)"
           :class="{'active':indexCounter===index}">
 
