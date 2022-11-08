@@ -187,6 +187,15 @@ createApp({
       }
       this.contacts[this.indexCounter].messages.push(newMsgFormat);
       this.newMessageSent = '';
+      const interlocutorAnswer = setTimeout(this.generateInterlocutorAnswer, 2000);
+    },
+    generateInterlocutorAnswer() {
+      let newMsgFormat = {
+        date: "08/11/2022 12:39",
+        message: "Tu mi dici quello che devo fare ed io lo faccio...",
+        status: 'received'
+      }
+      this.contacts[this.indexCounter].messages.push(newMsgFormat);
     }
   },
   mounted() {
