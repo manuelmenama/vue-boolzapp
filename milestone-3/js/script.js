@@ -7,7 +7,7 @@ createApp({
   data() {
     return {
       indexCounter: 0,
-      isRecived: false,
+      newMessageSent: '',
 
       contacts: [
         {
@@ -177,6 +177,16 @@ createApp({
   methods: {
     contactClickIssues(index) {
       this.indexCounter = index;
+    },
+    sentNewMessage(){
+      console.log(this.newMessageSent);
+      let newMsgFormat = {
+        date: "08/11/2022 12:39",
+        message: this.newMessageSent,
+        status: 'sent'
+      }
+      this.contacts[this.indexCounter].messages.push(newMsgFormat);
+      this.newMessageSent = '';
     }
   },
   mounted() {

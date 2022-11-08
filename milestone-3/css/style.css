@@ -272,7 +272,9 @@ main{
   height: 50%;
   border-radius: 5px;
   border: 0;
+  padding-left: 10px;
 }
+
 
 .b-right{
   width: 10%;

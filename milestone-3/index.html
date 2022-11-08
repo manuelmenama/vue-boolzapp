@@ -139,7 +139,11 @@
           </div>
 
           <div class="b-center d-flex center-flex">
-            <input type="text">
+            <input
+              type="text"
+              placeholder="Type your message here..."
+              v-model.trim="newMessageSent"
+              @keyup.enter="sentNewMessage">
           </div>
 
           <div class="b-right d-flex center-flex">
