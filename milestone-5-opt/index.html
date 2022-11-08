@@ -67,7 +67,7 @@
           <input
             type="text"
             placeholder="Search..."
-            v-model="searchedWord"
+            v-model.trim="searchedWord"
             @keyup="searchByName()">
         </section>
 
@@ -130,6 +130,24 @@
             v-for="(msg, index) in contacts[indexCounter].messages"
             :class="{'interlocutor-log':msg.status === 'received'}">
             <p>{{msg.message}}</p>
+            <div
+              class="dropdown"
+              @click="clickControlMenu(index)">
+              <i class="fa-solid fa-chevron-down"></i>
+              <div
+                class="comand-hideout"
+                :class="{'show-hideout':messageCounter === index}"
+                v-if="isShow">
+                <div
+                  class="delete"
+                  @click="">
+                  <span>Delete</span>
+                </div>
+                <div class="info">
+                  <span>Info</span>
+                </div>
+              </div>
+            </div>
             <div class="msg-time d-flex">
               <p>{{msg.date}}</p>
             </div>

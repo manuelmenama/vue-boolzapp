@@ -28,6 +28,7 @@ img{
   background-color: #d5f9ba;
   right: -100%;
   transform: translateX(-315px);
+  margin-bottom: 25px;
 }
 
 /* .my-log{
@@ -240,6 +241,47 @@ main{
   height: calc(100% - 140px);
   position: relative;
   overflow-y: scroll;
+}
+
+.log-control .dropdown{
+  position: absolute;
+  right: 10px;
+  top: 0;
+  color: #b1b1b1;
+  cursor: pointer;
+}
+
+.comand-hideout{
+  background-color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.411);
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  display: none;
+}
+
+.comand-hideout.show-hideout{
+  display: inline-block;
+}
+
+.comand-hideout div{
+  line-height: 25px;
+  padding-left: 10px;
+}
+
+.comand-hideout div:hover{
+  background-color: #e9ebeb;
+}
+
+.comand-hideout div:first-child:hover{
+  border-radius: 5px 5px 0 0;
+}
+
+.comand-hideout div:last-child:hover{
+  border-radius: 0 0 5px 5px;
 }
 
 .log-control .msg-time{

@@ -7,8 +7,10 @@ createApp({
   data() {
     return {
       indexCounter: 0,
+      messageCounter: 0,
       newMessageSent: '',
       searchedWord: '',
+      isShow: false,
 
       contacts: [
         {
@@ -200,11 +202,17 @@ createApp({
     },
     searchByName() {
       this.contacts.forEach(contact => {
-        let matchName = contact.name.includes(this.searchedWord);
-        console.log(matchName);
+        let lowerName = contact.name.toLowerCase();
+        let matchName = lowerName.includes(this.searchedWord.toLowerCase());
         if(!matchName) contact.visible = false;
         else contact.visible = true;
       });
+    },
+    clickControlMenu(index) {
+      
+      this.isShow = !this.isShow
+      this.messageCounter = index;
+
     }
   },
   mounted() {
