@@ -12,6 +12,7 @@ createApp({
       searchedWord: '',
       isShow: false,
 
+
       contacts: [
         {
           name: 'Michele',
@@ -209,10 +210,17 @@ createApp({
       });
     },
     clickControlMenu(index) {
-      
-      this.isShow = !this.isShow
+      this.isShow = !this.isShow;
       this.messageCounter = index;
+    },
+    deleteMessage(index) {
 
+      if(this.contacts[this.indexCounter].messages.length >= 1) {
+        this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);
+      }else{
+
+      }
+        
     }
   },
   mounted() {

@@ -13,6 +13,9 @@
   <!-- font awesome -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
 
+  <!-- luxon -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.1.0/cjs-browser/luxon.min.js' integrity='sha512-ib4Z7+94rZtNNVhAKgPLF3jzyoLEjHf8Wskp3tCnJzcsrnSbBsP9MSdV4qtsy3ADM2XXwzfJJu1g8+on1JlCNQ==' crossorigin='anonymous'></script>
+
   <link rel="stylesheet" href="css/style.css">
   <title>Boolzapp</title>
 </head>
@@ -140,7 +143,7 @@
                 v-if="isShow">
                 <div
                   class="delete"
-                  @click="">
+                  @click="deleteMessage(index)">
                   <span>Delete</span>
                 </div>
                 <div class="info">
