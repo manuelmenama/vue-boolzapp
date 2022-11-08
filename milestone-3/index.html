@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- font awesome -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>Boolzapp</title>
+</head>
+<body>
+  
+  <div id="app" class="container d-flex center-flex">
+
+    <main class="d-flex">
+
+      <nav class="nav-left">
+
+        <section class="top-nav d-flex space-between">
+          
+          <div class="user-profile d-flex align-center">
+            <div class="rounded-icon">
+              <img src="img/avatar_io.jpg" alt="">
+            </div>
+            <p>User name</p>
+          </div>
+
+          <div class="profile-option d-flex align-center">
+            <i class="fa-solid fa-circle-notch"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+
+        </section>
+
+        <section class="utilities-nav d-flex align-center">
+
+          <div class="rounded-icon">
+            <i class="fa-solid fa-bell-slash"></i>
+          </div>
+
+          <div class="notification-bell">
+
+            <p>
+              Ricevi notifiche di nuovi messaggi
+            </p>
+            <p>
+              Attiva notifiche desktop
+            </p>
+
+          </div>
+
+        </section>
+
+        <section class="search-nav d-flex align-center">
+          <div class="my-label d-flex center-flex">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input type="text">
+        </section>
+
+        <section class="bottom-nav">
+
+          <div
+          class="contact-card d-flex"
+          v-for="(contact, index) in contacts"
+          @click="contactClickIssues(index)"
+          :class="{'active':indexCounter===index}">
+
+            <div class="icon-container d-flex center-flex">
+              <div class="rounded-icon big">
+                <img :src="'img/avatar'+ contact.avatar + '.jpg'" alt="">
+              </div>
+            </div>
+
+            <div class="info-card d-flex space-between">
+              <div class="message-info">
+                <p>{{contact.name}}</p>
+                <p>{{contact.messages[contact.messages.length-1].message}}</p>
+              </div>
+              <div class="last-msg-time">
+                <p>{{contact.messages[contact.messages.length-1].date}}</p>
+              </div>
+            </div>
+          </div>
+
+        </section>          
+        
+      </nav>
+
+      <section class="chat-right">
+
+        <div class="top-chat d-flex space-between">
+
+          <div class="user-profile d-flex align-center">
+            <div class="rounded-icon">
+              <img :src="'img/avatar'+contacts[indexCounter].avatar+'.jpg'" alt="">
+            </div>
+            <div class="user-info">
+              <p>{{contacts[indexCounter].name}}</p>
+              <p>{{contacts[indexCounter].messages[contacts[indexCounter].messages.length-1].date}}</p>
+            </div>
+          </div>
+
+          <div class="profile-option d-flex align-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-paperclip"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+
+        </div>
+
+        <div class="main-chat">
+
+          <div
+            class="log-control"
+            v-for="(msg, index) in contacts[indexCounter].messages"
+            :class="{'interlocutor-log':msg.status === 'received'}">
+            <p>{{msg.message}}</p>
+            <div class="msg-time d-flex">
+              <p>{{msg.date}}</p>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="bottom-chat d-flex">
+
+          <div class="b-left d-flex center-flex">
+            <i class="fa-regular fa-face-smile"></i>
+          </div>
+
+          <div class="b-center d-flex center-flex">
+            <input type="text">
+          </div>
+
+          <div class="b-right d-flex center-flex">
+            <i class="fa-solid fa-microphone"></i>
+          </div>
+
+        </div>
+        
+      </section>
+
+    </main>
+
+    
+
+  </div>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
