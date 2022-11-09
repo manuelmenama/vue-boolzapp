@@ -19,28 +19,6 @@ img{
   object-fit: cover;
 }
 
-.log-control{
-  padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
-  width: 300px;
-  position: relative;
-  background-color: #d5f9ba;
-  right: -100%;
-  transform: translateX(-315px);
-  margin-bottom: 25px;
-}
-
-/* .my-log{
-} */
-
-.interlocutor-log{
-  background-color: white;
-  right: none;
-  transform: translateX(0px);
-  left: 10px;
-}
-
 /* utilities */
 .debug{
   background-color: rgba(95, 158, 160, 0.432);
@@ -64,6 +42,7 @@ img{
   justify-content: space-between;
 }
 
+/* rounded icon */
 .rounded-icon{
   background-color: #f2fbff;
   height: 50px;
@@ -81,6 +60,26 @@ img{
   height: 65px;
   width: 65px;
   border-radius: 50%;
+}
+
+/* log control */
+.log-control{
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+  background-color: #d5f9ba;
+  right: -100%;
+  transform: translateX(-315px);
+  margin-bottom: 25px;
+}
+
+.interlocutor-log{
+  background-color: white;
+  right: none;
+  transform: translateX(0px);
+  left: 10px;
 }
 
 /* container */
@@ -104,11 +103,13 @@ main{
   border-right: 1px solid #d9d9d9;
 }
 
+/* top section of nav */
 .top-nav{
   height: 70px;
   background-color: #eaeaea;
 }
 
+/* info about current user */
 .user-profile{
   padding: 0 10px;
 }
@@ -117,6 +118,7 @@ main{
   margin-right: 5px;
 }
 
+/* notification control section */
 .profile-option{
   padding: 0 20px;
 }
@@ -151,6 +153,7 @@ main{
   color: #747474;
 }
 
+/* section with input text */
 .search-nav{
   height: 40px;
   background-color: #fafafa;
@@ -177,6 +180,7 @@ main{
   padding-left: 10px;
 }
 
+/* section with all contact card */
 .bottom-nav{
   height: calc(100% - 190px);
   background-color: white;
@@ -225,6 +229,7 @@ main{
   height: 100%;
 }
 
+/* at the top of chat section */
 .top-chat{
   height: 70px;
   background-color: #eaeaea;
@@ -239,6 +244,7 @@ main{
   color: #b1b1b1;
 }
 
+/* section with all chat log */
 .main-chat{
   padding: 40px 60px;
   background-image: url(../img/mine.jpg);
@@ -255,6 +261,15 @@ main{
   cursor: pointer;
 }
 
+.log-control .msg-time{
+  font-size: 0.6rem;
+  color: #b1b1b1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* select option */
 .comand-hideout{
   background-color: white;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.411);
@@ -288,14 +303,7 @@ main{
   border-radius: 0 0 5px 5px;
 }
 
-.log-control .msg-time{
-  font-size: 0.6rem;
-  color: #b1b1b1;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
+/* section with input text for new message */
 .bottom-chat{
   height: 70px;
   background-color: #f3eeea;

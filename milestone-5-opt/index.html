@@ -18,12 +18,15 @@
 </head>
 <body>
   
+  <!-- app è il container -->
   <div id="app" class="container d-flex center-flex">
 
     <main class="d-flex">
 
+      <!-- nav-left contiene tutti i contatti e le info sui contatti -->
       <nav class="nav-left">
 
+        <!-- top-nav cotiente le info sul proprio contatto -->
         <section class="top-nav d-flex space-between">
           
           <div class="user-profile d-flex align-center">
@@ -41,6 +44,7 @@
 
         </section>
 
+        <!-- box contenente "la gestione" delle notifiche -->
         <section class="utilities-nav d-flex align-center">
 
           <div class="rounded-icon">
@@ -60,10 +64,12 @@
 
         </section>
 
+        <!-- questa è la sezione dedicata alla ricerca dei contatti grazie ad un input text -->
         <section class="search-nav d-flex align-center">
           <div class="my-label d-flex center-flex">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
+          <!-- alla pressione di ogni pulsante della tastiera parte la funzione di ricerca -->
           <input
             type="text"
             placeholder="Search..."
@@ -71,29 +77,35 @@
             @keyup="searchByName()">
         </section>
 
+        <!-- la sezione bottom è quella che contiene tutte le card dei contatti -->
         <section class="bottom-nav">
 
+          <!-- stampo le card dei contatti che al click mostreranno la conversazione ativa -->
           <div
-          class="contact-card d-flex"
-          v-for="(contact, index) in contacts"
-          v-show="contact.visible"
-          @click="contactClickIssues(index)"
-          :class="{'active':indexCounter===index}">
+            class="contact-card d-flex"
+            v-for="(contact, index) in contacts"
+            v-show="contact.visible"
+            @click="contactClickIssues(index)"
+            :class="{'active':indexCounter===index}">
 
+            <!-- compongo la mia immagine sfruttando il contenuto dell'oggetto in "avatar" -->
             <div class="icon-container d-flex center-flex">
               <div class="rounded-icon big">
-                <img :src="'img/avatar'+ contact.avatar + '.jpg'" alt="">
+                <img
+                  :src="'img/avatar'+ contact.avatar + '.jpg'" :alt="contact.name + ' avatar'">
               </div>
             </div>
 
             <div class="info-card d-flex space-between">
               <div class="message-info">
                 <p>{{contact.name}}</p>
+                <!-- con una funzione stampo l'ultimo messaggio -->
                 <p>
                   {{lastMessageReturn(index)}}
                 </p>
               </div>
               <div class="last-msg-time">
+                <!-- un'altra funzione stampa la data dell'ultimo messaggio -->
                 <p>
                   {{lastDateReturn(index)}}
                 </p>
@@ -105,16 +117,22 @@
         
       </nav>
 
+      <!-- chat-right è la sezione contenete tutti i componenti della chat attiva -->
       <section class="chat-right">
 
+        <!-- top-chat è il contenitore di info che si trova in testa -->
         <div class="top-chat d-flex space-between">
-
+          
+          <!-- user profile contiene tutte le info del contatto attivo -->
           <div class="user-profile d-flex align-center">
             <div class="rounded-icon">
-              <img :src="'img/avatar'+contacts[indexCounter].avatar+'.jpg'" alt="">
+              <img
+                :src="'img/avatar'+contacts[indexCounter].avatar+'.jpg'"
+                :alt="contacts[indexCounter].name + 'avatar'">
             </div>
             <div class="user-info">
               <p>{{contacts[indexCounter].name}}</p>
+              <!-- sempre tramite lastDateReturn(indexCounter) con parametro dello script chiamo la funzione che restituisce la data dell'ultimo messaggio -->
               <p>
                 {{lastDateReturn(indexCounter)}}
               </p>
@@ -129,21 +147,29 @@
 
         </div>
 
+        <!-- main chat è il contenitore di tutto il log della conversazione -->
         <div class="main-chat">
 
+          <!-- log control riconosce se un messaggio è recived -->
           <div
             class="log-control"
             v-for="(msg, index) in contacts[indexCounter].messages"
             :class="{'interlocutor-log':msg.status === 'received'}">
             <p>{{msg.message}}</p>
+
+            <!-- con click apro il menù a tendina -->
             <div
               class="dropdown"
               @click="clickControlMenu(index)">
               <i class="fa-solid fa-chevron-down"></i>
+
+              <!-- menu a tendina -->
               <div
                 class="comand-hideout"
                 :class="{'show-hideout':messageCounter === index}"
                 v-if="isShow">
+
+                <!-- al click sul delete parte la funzione che cancella il messaggio -->
                 <div
                   class="delete"
                   @click="deleteMessage()">
@@ -167,12 +193,13 @@
             <i class="fa-regular fa-face-smile"></i>
           </div>
 
+          <!-- alla pressione su invio agiungo un nuovo messaggio -->
           <div class="b-center d-flex center-flex">
             <input
               type="text"
               placeholder="Type your message here..."
               v-model.trim="newMessageSent"
-              @keyup.enter="sentNewMessage">
+              @keyup.enter="sentNewMessage()">
           </div>
 
           <div class="b-right d-flex center-flex">

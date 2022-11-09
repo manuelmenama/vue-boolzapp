@@ -181,10 +181,14 @@ createApp({
     }
   },
   methods: {
+    //funzione per attivare la card
     contactClickIssues(index) {
       this.indexCounter = index;
+      //nasconde il select nel caso fosse true
       this.isShow = false;
     },
+    //funzione per generare un nuovo messaggio
+    //attivo la funzione di timeout per simulare una risposta
     sentNewMessage(){
       const now = DateTime.now();
       console.log(this.newMessageSent);
@@ -197,6 +201,7 @@ createApp({
       this.newMessageSent = '';
       const interlocutorAnswer = setTimeout(this.generateInterlocutorAnswer, 2000);
     },
+    //risposta generata dopo il timeout
     generateInterlocutorAnswer() {
       const now = DateTime.now();
       let newMsgFormat = {
@@ -206,6 +211,7 @@ createApp({
       }
       this.contacts[this.indexCounter].messages.push(newMsgFormat);
     },
+    //funzione di ricerca del contatto alla pressione di qualsiasi tasto
     searchByName() {
       this.contacts.forEach(contact => {
         let lowerName = contact.name.toLowerCase();
@@ -214,22 +220,26 @@ createApp({
         else contact.visible = true;
       });
     },
+    //controllo specifico per il select menù
     clickControlMenu(index) {
       this.isShow = !this.isShow;
       this.messageCounter = index;
     },
+    //funzione per restituire l'ultimo messaggio
     lastMessageReturn(index){
       if(!this.contacts[index].messages.length) return `No message inside`;
       else {
         return this.contacts[index].messages[this.contacts[index].messages.length - 1].message
       }
     },
+    //come sopra ma per la data
     lastDateReturn(index){
       if(!this.contacts[index].messages.length) return `-`;
       else {
         return this.contacts[index].messages[this.contacts[index].messages.length - 1].date
       }
     },
+    //funzione che elimina i messaggi
     deleteMessage() {
       this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);        
     }
