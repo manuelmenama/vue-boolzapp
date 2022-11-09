@@ -3,6 +3,9 @@ console.log('Ciao vuejs!');
 
 const {createApp} = Vue;
 
+
+const DateTime = luxon.DateTime;
+const Interval = luxon.Interval;
 createApp({
   data() {
     return {
@@ -11,6 +14,7 @@ createApp({
       newMessageSent: '',
       searchedWord: '',
       isShow: false,
+      deleteCounter: 0,
 
 
       contacts: [
@@ -183,9 +187,10 @@ createApp({
       this.indexCounter = index;
     },
     sentNewMessage(){
+      const now = DateTime.now();
       console.log(this.newMessageSent);
       let newMsgFormat = {
-        date: "08/11/2022 12:39",
+        date: now.setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
         message: this.newMessageSent,
         status: 'sent'
       }
@@ -194,8 +199,9 @@ createApp({
       const interlocutorAnswer = setTimeout(this.generateInterlocutorAnswer, 2000);
     },
     generateInterlocutorAnswer() {
+      const now = DateTime.now();
       let newMsgFormat = {
-        date: "08/11/2022 12:39",
+        date: now.setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
         message: "Tu mi dici quello che devo fare ed io lo faccio...",
         status: 'received'
       }
@@ -214,12 +220,9 @@ createApp({
       this.messageCounter = index;
     },
     deleteMessage(index) {
-
-      if(this.contacts[this.indexCounter].messages.length >= 1) {
-        this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);
-      }else{
-
-      }
+      
+      this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);
+      
         
     }
   },

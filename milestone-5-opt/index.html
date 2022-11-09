@@ -13,9 +13,6 @@
   <!-- font awesome -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
 
-  <!-- luxon -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.1.0/cjs-browser/luxon.min.js' integrity='sha512-ib4Z7+94rZtNNVhAKgPLF3jzyoLEjHf8Wskp3tCnJzcsrnSbBsP9MSdV4qtsy3ADM2XXwzfJJu1g8+on1JlCNQ==' crossorigin='anonymous'></script>
-
   <link rel="stylesheet" href="css/style.css">
   <title>Boolzapp</title>
 </head>
@@ -92,10 +89,16 @@
             <div class="info-card d-flex space-between">
               <div class="message-info">
                 <p>{{contact.name}}</p>
-                <p>{{contact.messages[contact.messages.length-1].message}}</p>
+                <p
+                v-if="contacts[indexCounter].messages.length">
+                  {{contact.messages[contact.messages.length-1].message}}
+                </p>
               </div>
               <div class="last-msg-time">
-                <p>{{contact.messages[contact.messages.length-1].date}}</p>
+                <p
+                  v-if="contacts[indexCounter].messages.length">
+                  {{contact.messages[contact.messages.length-1].date}}
+                </p>
               </div>
             </div>
           </div>
@@ -114,7 +117,10 @@
             </div>
             <div class="user-info">
               <p>{{contacts[indexCounter].name}}</p>
-              <p>{{contacts[indexCounter].messages[contacts[indexCounter].messages.length-1].date}}</p>
+              <p
+                v-if="contacts[indexCounter].messages.length">
+                {{contacts[indexCounter].messages[contacts[indexCounter].messages.length-1].date}}
+              </p>
             </div>
           </div>
 
@@ -185,8 +191,8 @@
     
 
   </div>
-
   <script src="https://unpkg.com/vue@3"></script>
+  <script src="js/luxon.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
