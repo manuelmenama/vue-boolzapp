@@ -89,15 +89,13 @@
             <div class="info-card d-flex space-between">
               <div class="message-info">
                 <p>{{contact.name}}</p>
-                <p
-                v-if="contacts[indexCounter].messages.length">
-                  {{contact.messages[contact.messages.length-1].message}}
+                <p>
+                  {{lastMessageReturn(index)}}
                 </p>
               </div>
               <div class="last-msg-time">
-                <p
-                  v-if="contacts[indexCounter].messages.length">
-                  {{contact.messages[contact.messages.length-1].date}}
+                <p>
+                  {{lastDateReturn(index)}}
                 </p>
               </div>
             </div>
@@ -117,9 +115,8 @@
             </div>
             <div class="user-info">
               <p>{{contacts[indexCounter].name}}</p>
-              <p
-                v-if="contacts[indexCounter].messages.length">
-                {{contacts[indexCounter].messages[contacts[indexCounter].messages.length-1].date}}
+              <p>
+                {{lastDateReturn(indexCounter)}}
               </p>
             </div>
           </div>
@@ -149,7 +146,7 @@
                 v-if="isShow">
                 <div
                   class="delete"
-                  @click="deleteMessage(index)">
+                  @click="deleteMessage()">
                   <span>Delete</span>
                 </div>
                 <div class="info">
@@ -191,6 +188,7 @@
     
 
   </div>
+
   <script src="https://unpkg.com/vue@3"></script>
   <script src="js/luxon.js"></script>
   <script src="js/script.js"></script>

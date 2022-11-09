@@ -201,8 +201,12 @@ main{
 }
 
 .info-card{
-  width: calc(100% - 100px);
+  width: calc(100% - 120px);
   margin-left: 20px;
+}
+
+.info-card div{
+  width: 50%;
 }
 
 .message-info p:first-child{

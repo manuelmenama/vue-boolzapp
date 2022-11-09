@@ -14,8 +14,6 @@ createApp({
       newMessageSent: '',
       searchedWord: '',
       isShow: false,
-      deleteCounter: 0,
-
 
       contacts: [
         {
@@ -185,6 +183,7 @@ createApp({
   methods: {
     contactClickIssues(index) {
       this.indexCounter = index;
+      this.isShow = false;
     },
     sentNewMessage(){
       const now = DateTime.now();
@@ -219,11 +218,20 @@ createApp({
       this.isShow = !this.isShow;
       this.messageCounter = index;
     },
-    deleteMessage(index) {
-      
-      this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);
-      
-        
+    lastMessageReturn(index){
+      if(!this.contacts[index].messages.length) return `No message inside`;
+      else {
+        return this.contacts[index].messages[this.contacts[index].messages.length - 1].message
+      }
+    },
+    lastDateReturn(index){
+      if(!this.contacts[index].messages.length) return `-`;
+      else {
+        return this.contacts[index].messages[this.contacts[index].messages.length - 1].date
+      }
+    },
+    deleteMessage() {
+      this.contacts[this.indexCounter].messages.splice(this.messageCounter, 1);        
     }
   },
   mounted() {
